@@ -14,6 +14,7 @@ const server = http.createServer(app);
 server.listen(port);/*informar ao servidor para ouvir na porta*/
 server.on('error', onError); //chamando a função para tratamento de erro
 server.on('listening', onListening);
+console.log('Rodando na porta...')
 
 /*função para disponibilizar porta* - normalized port*/
 function normalizePort(val){
