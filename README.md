@@ -6,9 +6,9 @@
 
 💻 Technologies
 
-NodeJS
-Azure 
-MongoDB
-Postmann 
+* NodeJS
+* Azure 
+* MongoDB
+* Postmann 
 
 💡 Insert your settings in config.json to configurate the database.
