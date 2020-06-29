@@ -3,30 +3,16 @@
 
 const express = require('express');
 const router = express.Router();
+const controller = require('../controllers/products-controller');
+const authService = require('../services/auth-service');
 
-const route = router.get('/', (req, res, next)=>{
-  res.status(200).send({
-    title: "Node Store API", 
-    version: "0.0.1"
-  });
-});
-
-
-//CRUD
-router.post('/', (req, res, next)=>{
-  res.status(201).send(req.body);  //201 - metodo created 
-});
-
-router.put('/:id', (req, res, next)=>{
-  const id = req.params.id;
-  res.status(201).send({
-      id: id,
-      item: req.body});  //201 - metodo created 
-});
-
-router.delete('/', (req, res, next)=>{
-  res.status(200).send(req.body);  //201 - metodo created 
-});
+router.get('/', controller.get);
+router.get('/:slug', controller.getBySlug);
+router.get('/admin/:id', controller.getById);
+router.get('/tags/:tag', controller.getByTag);
+router.post('/', authService.isAdmin, controller.post);
+router.put('/:id', authService.isAdmin, controller.put);
+router.delete('/:id', authService.isAdmin, controller.delete);
 
 
 
